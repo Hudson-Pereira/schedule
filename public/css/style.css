@@ -1,0 +1,14 @@
+* {
+    margin: 0;
+    font-family: 'figtree';
+}
+
+body {
+    /* background-color: aquamarine; */
+    /* background: no-repeat url("/image/fundo.jpg"); */
+    /* opacity: 0.5 */
+}
+
+h1 {
+    color: red
+}

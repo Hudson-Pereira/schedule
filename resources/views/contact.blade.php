@@ -1,7 +1,13 @@
+@extends('layouts.main')
+
+@section('title', "Contato")
+
+@section('content')
+
 <h1>Contato</h1>
 
-@if($nome == "Hudson")
-<p>{{$nome}}</p>
-@else
-<p>Outro nome</p>
+@if($busca != '')
+<p> {{$busca}} </p>
 @endif
+
+@endsection

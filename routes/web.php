@@ -14,13 +14,21 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
     return view('welcome');
 });
 
 Route::get('/contact', function () {
 
-    $nome = "Ramona";
+    $busca = request('search'); //método request para resgatar parametros pela url
+    //para busca via get (query string/parametros), não precisa de variável na rota
 
-    return view('contact', ['nome' => $nome]);
+    return view('contact', ['busca' => $busca]);
 });
+
+Route::get('/schedule', function () {
+    return view('schedule');
+});
+
+// Route::get('/{?id}', function($id){
+//     return view('coisas',['id' => $id]);
+// });
