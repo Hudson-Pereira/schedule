@@ -25,13 +25,15 @@
     <header>
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbar">
-                <a href="/" class="navbar-brand">logo</a>
+                <a href="/" class="navbar-brand">
+                    <ion-icon name="heart"></ion-icon>
+                </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a href="/" class="nav-link">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/schedule" class="nav-link">Agenda</a>
+                        <a href="/events/create" class="nav-link">Criar Evento</a>
                     </li>
                     <li class="nav-item">
                         <a href="/contact" class="nav-link">Sobre</a>
@@ -47,6 +49,8 @@
     <footer>
         <p>Hudson Oliveira &copy; 2023</p>
     </footer>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 
 </html>

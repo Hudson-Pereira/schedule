@@ -1,6 +1,7 @@
 <?php
-
+//importações
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,22 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/contact', function () {
-
-    $busca = request('search'); //método request para resgatar parametros pela url
-    //para busca via get (query string/parametros), não precisa de variável na rota
-
-    return view('contact', ['busca' => $busca]);
-});
-
-Route::get('/schedule', function () {
-    return view('schedule');
-});
-
-// Route::get('/{?id}', function($id){
-//     return view('coisas',['id' => $id]);
-// });
+Route::get('/', [EventController::class, 'index']);
+Route::get('/events/create', [EventController::class, 'create']);

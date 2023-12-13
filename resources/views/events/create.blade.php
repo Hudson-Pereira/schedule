@@ -1,7 +1,9 @@
 @extends('layouts.main')
 
-@section('title', 'Agenda')
+@section('title','Eventos')
 
 @section('content')
-<h1>Agenda</h1>
+
+<h1>Crie um evento</h1>
+
 @endsection
