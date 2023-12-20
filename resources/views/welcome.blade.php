@@ -21,10 +21,9 @@
             <img src="../image/fundo.jpg" alt="{{$event->title}}">
             <h5 class="card-title">{{$event->title}}</h5>
             <p class="card-date">{{$event->date}}</p>
-            <a href="" class="btn btn-primary">Saber mais</a>
+            <a href="#" class="btn btn-primary">Saber mais</a>
         </div>
         @endforeach
     </div>
 </div>
-
 @endsection

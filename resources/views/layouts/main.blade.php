@@ -36,19 +36,21 @@
                         <a href="/events/create" class="nav-link">Criar Evento</a>
                     </li>
                     <li class="nav-item">
-                        <a href="/contact" class="nav-link">Sobre</a>
+                        <a href="/contact" class="nav-link">Contato</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/about" class="nav-link">Sobre</a>
                     </li>
                 </ul>
 
             </div>
         </nav>
     </header>
-
     @yield('content')
 
-    <footer>
+    <!-- <footer>
         <p>Hudson Oliveira &copy; 2023</p>
-    </footer>
+    </footer> -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
