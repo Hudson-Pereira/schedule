@@ -31,12 +31,27 @@ class EventController extends Controller
         $event->country = $request->country;
         $event->state = $request->state;
         $event->city = $request->city;
-        $event->date = '1991-10-25';
+        $event->date = $request->date;
         $event->productor = $request->productor;
         $event->private = $request->private;
 
+        //image upload
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            //$imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . "." . $extension;
+
+            $imageName =  $request->local . "_" . $request->city . "." . $extension;
+
+            $request->image->move(public_path('image/events'), $imageName);
+
+            $event->image = $imageName;
+        };
+
         $event->save();
 
-        return redirect('/');
+        return redirect('/')->with('msg', 'Evento criado com sucesso!');
     }
 }

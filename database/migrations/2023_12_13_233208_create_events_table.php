@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('state', 2);
             $table->string('city', 20);
             $table->boolean('private');
-            $table->dateTime('date');
+            $table->string('date', 18);
             $table->timestamps();
         });
     }

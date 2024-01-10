@@ -7,7 +7,7 @@
 <div id="event-create-container" class="col-md-6 offset-md-3">
     <h1>Crie um evento</h1>
 
-    <form action='/events' method='POST'>
+    <form action='/events' method='POST' enctype='multipart/form-data'>
         @csrf {{-- Obrigatorio para enviar forms --}}
         <div class='form-group'>
             <label for='title'>Evento:</label>
@@ -35,7 +35,7 @@
         </div>
         <div class='form-group'>
             <label for='date'>Data:</label>
-            <input type='date' class='form-control' id='date' name='date'>
+            <input type='text' class='form-control' id='date' name='date'>
         </div>
         <div class='form-group'>
             <label for='productor'>Organizador:</label>
@@ -48,6 +48,12 @@
                 <option value='0'>Sim</option>
             </select>
         </div>
+        <div class='form-group'>
+            <label for='image'>Imagem do envento:</label>
+            <input type="file" id="image" name="image" cçass="from-control-file">
+        </div>
+
+
         <input type='submit' class='btn btn-primary' value='Criar Evento'>
     </form>
 </div>
