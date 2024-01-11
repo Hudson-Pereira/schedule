@@ -42,6 +42,28 @@
                     <li class="nav-item">
                         <a href="/about" class="nav-link">Sobre</a>
                     </li>
+                    @auth
+                    <li class="nav-item">
+                        <a href="/dashboard" class="nav-link">Meus eventos</a>
+                    </li>
+                    <li class="nav-item">
+                        <form action='/logout' method='POST'> <!-- logouto no laraval feito com post -->
+                            @csrf
+                            <a href="/logout" class="nav-link" onclick="event.preventDefault();
+                                    this.closest('form').submit();">
+                                Sair
+                            </a>
+                        </form>
+                    </li>
+                    @endauth
+                    @guest
+                    <li class="nav-item">
+                        <a href="/login" class="nav-link">Entrar</a>
+                    </li>
+                    <!-- <li class="nav-item">
+                        <a href="/register" class="nav-link">Registrar</a>
+                    </li> verificar uso-->
+                    @endguest <!-- metodo para verificar logado ou nao -->
                 </ul>
 
             </div>

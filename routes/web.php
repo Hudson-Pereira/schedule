@@ -25,3 +25,13 @@ Route::post('/events', [EventController::class, 'store']); //nome convenção pa
 Route::get('/contact', [ContactController::class, 'index']);
 
 Route::get('/about', [AboutController::class, 'index']);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
