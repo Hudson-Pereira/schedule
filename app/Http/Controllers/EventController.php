@@ -10,9 +10,20 @@ class EventController extends Controller
 
     public function index()
     {
-        $events = Event::all(); //all() seleciona todos os dados da db
 
-        return view('welcome', ['events' => $events]); //enviar dados para a view entre []
+        $search = request('search'); //pegando atributo search
+
+        if ($search) {
+
+            $events = Event::where([ //model sempre no singular
+                ['title', 'like', '%' . $search . '%'] //array para busca contendo campo
+            ])->get(); //especificando que quero pegar dados
+
+        } else {
+            $events = Event::all(); //all() seleciona todos os dados da db
+        }
+
+        return view('welcome', ['events' => $events, 'search' => $search]); //enviar dados para a view entre []
     }
 
     public function create()
