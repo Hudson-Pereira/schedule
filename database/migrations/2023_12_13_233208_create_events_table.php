@@ -17,10 +17,10 @@ return new class extends Migration
             $table->text('description', 500);
             $table->string('local', 200);
             $table->string('country', 15);
-            $table->string('state', 2);
+            $table->string('state', 20);
             $table->string('city', 20);
             $table->boolean('private');
-            $table->string('date', 18);
+            $table->dateTime('date');
             $table->timestamps();
         });
     }

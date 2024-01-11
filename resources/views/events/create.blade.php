@@ -19,7 +19,7 @@
         </div>
         <div class='form-group'>
             <label for='local'>Local:</label>
-            <input type='text' class='form-control' id='local' name='local' placeholder="Nome do evento">
+            <input type='text' class='form-control' id='local' name='local' placeholder="Local do evento">
         </div>
         <div class='form-group'>
             <label for='country'>País:</label>
@@ -35,7 +35,7 @@
         </div>
         <div class='form-group'>
             <label for='date'>Data:</label>
-            <input type='text' class='form-control' id='date' name='date'>
+            <input type='date' class='form-control' id='date' name='date'>
         </div>
         <div class='form-group'>
             <label for='productor'>Organizador:</label>
@@ -47,6 +47,15 @@
                 <option value='0'>Não</option>
                 <option value='0'>Sim</option>
             </select>
+        </div>
+        <div class="form-group">
+            <lable for='title'>Adicione itens de infraestrutura:</lable>
+            <div class="form-group">
+                <input type='checkbox' name='itens[]' value='cadeiras'> Cadeiras <!--name entre colchetes para mandar mais de um item npara mesma coluna na table (json)-->
+                <input type='checkbox' name='itens[]' value='palco'> Palco
+                <input type='checkbox' name='itens[]' value='openbar'> Open bar
+                <input type='checkbox' name='itens[]' value='openfood'> open food
+            </div>
         </div>
         <div class='form-group'>
             <label for='image'>Imagem do envento:</label>

@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model //model sempre em letra maiuscula e singular
 {
     use HasFactory;
+
+    protected $casts = [ //casts utilizado para definir array no model
+        'itens' => 'array'
+    ];
+
+    protected $dates = ['date']; //campo de data
 }

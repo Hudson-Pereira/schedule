@@ -34,6 +34,7 @@ class EventController extends Controller
         $event->date = $request->date;
         $event->productor = $request->productor;
         $event->private = $request->private;
+        $event->itens = $request->itens;
 
         //image upload
         if ($request->hasFile('image') && $request->file('image')->isValid()) {
@@ -53,5 +54,13 @@ class EventController extends Controller
         $event->save();
 
         return redirect('/')->with('msg', 'Evento criado com sucesso!');
+    }
+
+    public function show($id)
+    {
+
+        $event = Event::findOrFail($id); //resgate dados no banco ou retornar erro
+
+        return view('events.show', ['event' => $event]); //mostrar view com os dados 
     }
 }
