@@ -18,7 +18,7 @@ use App\Http\Controllers\AboutController;
 */
 
 Route::get('/', [EventController::class, 'index']); //utilizando controller e definindo rota
-Route::get('/events/create', [EventController::class, 'create']);
+Route::get('/events/create', [EventController::class, 'create'])->middleware('auth'); //middleware para solicita atenticacao para acessar rota
 Route::get('/events/{id}', [EventController::class, 'show']);
 Route::post('/events', [EventController::class, 'store']); //nome convenção para rota de criar coisas
 

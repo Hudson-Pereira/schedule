@@ -14,4 +14,9 @@ class Event extends Model //model sempre em letra maiuscula e singular
     ];
 
     protected $dates = ['date']; //campo de data
+
+    public function user()
+    {
+        return $this->belongTo('App\Models\User');
+    }
 }

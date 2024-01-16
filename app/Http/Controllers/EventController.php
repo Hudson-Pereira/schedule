@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event; //importando model event (model acessa o banco)
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -34,8 +35,11 @@ class EventController extends Controller
     public function store(Request $request)
     { //Request para receber dados do form post
 
+        $user = auth()->user(); //método para pegar dados do user logado
+
         $event = new Event();
 
+        $event->user_id = $user->id;
         $event->title = $request->title;
         $event->description = $request->description;
         $event->local = $request->local;
@@ -72,6 +76,8 @@ class EventController extends Controller
 
         $event = Event::findOrFail($id); //resgate dados no banco ou retornar erro
 
-        return view('events.show', ['event' => $event]); //mostrar view com os dados 
+        $eventOwner = User::where('id', $event->user_id)->first()->toArray();
+
+        return view('events.show', ['event' => $event, 'eventOwner' => $eventOwner]); //mostrar view com os dados 
     }
 }

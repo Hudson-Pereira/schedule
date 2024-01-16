@@ -27,7 +27,7 @@
         <nav class="navbar navbar-expand-lg navbar-light">
             <div class="collapse navbar-collapse" id="navbar">
                 <a href="/" class="navbar-brand">
-                    <ion-icon name="heart"></ion-icon>
+                    <ion-icon name="home"></ion-icon>
                 </a>
                 <ul class="navbar-nav">
                     <li class="nav-item">
