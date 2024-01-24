@@ -80,4 +80,51 @@ class EventController extends Controller
 
         return view('events.show', ['event' => $event, 'eventOwner' => $eventOwner]); //mostrar view com os dados 
     }
+
+    public function dashboard()
+    {
+
+        $user = auth()->user();
+
+        $events = $user->events;
+
+        return view('events.dashboard', ['events' => $events]);
+    }
+
+    public function destroy($id)
+    {
+        Event::findOrFail($id)->delete();
+        return redirect('/dashboard')->with('msg', 'Evento excluido com sucesso!');
+    }
+
+    public function edit($id)
+    {
+        $event = Event::findOrFail($id);
+
+        return view('events.edit', ['event' => $event]);
+    }
+
+    public function update(Request $request)
+    {
+
+        $data = $request->all();
+
+        if ($request->hasFile('image') && $request->file('image')->isValid()) {
+            $requestImage = $request->image;
+
+            $extension = $requestImage->extension();
+
+            //$imageName = md5($requestImage->getClientOriginalName() . strtotime('now')) . "." . $extension;
+
+            $imageName =  $request->local . "_" . $request->city . "." . $extension;
+
+            $request->image->move(public_path('image/events'), $imageName);
+
+            $data['image'] = $imageName;
+        };
+
+        Event::findOrFail($request->id)->update($data);
+
+        return redirect('/dashboard')->with('msg', 'Evento alterado com sucesso!');
+    }
 }

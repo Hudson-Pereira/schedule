@@ -19,4 +19,6 @@ class Event extends Model //model sempre em letra maiuscula e singular
     {
         return $this->belongTo('App\Models\User');
     }
+
+    protected $guarded = []; //especificando que o post é seguro
 }

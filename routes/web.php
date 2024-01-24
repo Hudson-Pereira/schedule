@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\EventController; //importando controller
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController;
+use GuzzleHttp\Middleware;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +22,12 @@ Route::get('/', [EventController::class, 'index']); //utilizando controller e de
 Route::get('/events/create', [EventController::class, 'create'])->middleware('auth'); //middleware para solicita atenticacao para acessar rota
 Route::get('/events/{id}', [EventController::class, 'show']);
 Route::post('/events', [EventController::class, 'store']); //nome convenção para rota de criar coisas
+Route::delete('/events/{id}', [EventController::class, 'destroy'])->middleware('auth');
+Route::get('/events/edit/{id}', [EventController::class, 'edit'])->middleware('auth');
+Route::put('/events/update/{id}', [EventController::class, 'update'])->middleware('auth');
 
 Route::get('/contact', [ContactController::class, 'index']);
 
 Route::get('/about', [AboutController::class, 'index']);
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+Route::get('/dashboard', [EventController::class, 'dashboard'])->middleware('auth');
