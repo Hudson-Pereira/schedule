@@ -6,6 +6,7 @@ use App\Models\Event; //importando model event (model acessa o banco)
 use App\Models\User;
 use Illuminate\Http\Request;
 
+
 class EventController extends Controller
 {
 
@@ -64,6 +65,14 @@ class EventController extends Controller
             $request->image->move(public_path('image/events'), $imageName);
 
             $event->image = $imageName;
+        };
+
+        $date = $request->date . ' 00:00:00';
+        $allEvents = Event::all(); //filtrar por data
+
+        foreach ($allEvents as $event) {
+            if ($event->date == $date)
+                return redirect('/')->with('msg', 'Já existe evento para essa data!');
         };
 
         $event->save();
