@@ -70,9 +70,10 @@ class EventController extends Controller
         $date = $request->date . ' 00:00:00';
         $allEvents = Event::all(); //filtrar por data
 
-        foreach ($allEvents as $event) {
-            if ($event->date == $date)
+        foreach ($allEvents as $events) {
+            if ($events->date == $date) {
                 return redirect('/')->with('msg', 'Já existe evento para essa data!');
+            };
         };
 
         $event->save();
